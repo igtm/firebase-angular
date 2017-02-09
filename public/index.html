@@ -66,13 +66,21 @@
 <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 <script src="app.js"></script>
   </head>
-  <body>
-    <div id="message">
-      <h1>Welcome to Firebase Hosting</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+  <body ng-app="app">
+    <div id="message" ng-controller="MyCtrl as ctrl">
+      <pre>
+{{ ctrl.object | json }}
+      </pre>
+      <input type="text" ng-model="data.text">
+      <h1>{{ data.text }}</h1>
       <ul>
-        <li><a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a></li>
+        <li ng-repeat="talk in talks">{{ talk.text }}</talk>
       </ul>
+      <!-- push a new message onto the array -->
+      <form ng-submit="addTalk()">
+        <input ng-model="newTalk" />
+        <button type="submit">送信</button>
+      </form>
     </div>
   </body>
 </html>
